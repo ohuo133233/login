@@ -7,10 +7,10 @@ public class User {
     // 用于数据库主键
     private long id;
     // 用户名，不能重复
-    private String account_number;
+    private String accountNumber;
     // 用户密码
     private String password;
-    // 手机号
+    // 手机号，数据库设置的可以为null，客户端可以不传入
     private String phone;
 
     public long getId() {
@@ -21,12 +21,12 @@ public class User {
         this.id = id;
     }
 
-    public String getAccount_number() {
-        return account_number;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccount_number(String account_number) {
-        this.account_number = account_number;
+    public void setAccountNumber(String account_number) {
+        this.accountNumber = account_number;
     }
 
     public String getPhone() {
@@ -43,5 +43,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
