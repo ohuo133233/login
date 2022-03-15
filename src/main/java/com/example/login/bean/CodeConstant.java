@@ -10,6 +10,7 @@ public class CodeConstant {
     // 未知错误
     public static final int FAIL = -1;
 
+    // TODO 后续扩展
     // 用户已经存在
     public static final int ALREADY_EXISTS = -100;
     // 密码错误

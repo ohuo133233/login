@@ -1,8 +1,8 @@
 server:
+  # 如果服务器啥也没有运行可以直接使用8080端口，如果有端口冲突修改下面端口。
   port: 8080
 spring:
   datasource:
-    # 127.0.0.1:8080换成你的服务端IP，端口默认3306，需要的话改自己改。login是数据库名称
-    url: jdbc:mysql://49.233.14.150:3306/login?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT
-    username: wang
-    password: 155620
+    url: jdbc:mysql://服务器外网地址:3306/你建的数据库名称?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT
+    username: mysql用户name，确保有上面数据库的权限
+    password: mysql用户密码

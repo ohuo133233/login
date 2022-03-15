@@ -2,6 +2,7 @@ package com.example.login.bean;
 
 /**
  * 用户Data类
+ * 映射数据库的User表
  */
 public class User {
     // 用于数据库主键

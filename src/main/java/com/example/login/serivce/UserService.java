@@ -13,6 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * User注册和登录的业务逻辑都这个类了
+ * 你可以修改这个类的逻辑或者扩展，但先保证先跑通了，防止其他问题干扰的业务逻辑代码。老手直接开始好吧。
+ */
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
 public class UserService {
@@ -25,14 +29,15 @@ public class UserService {
     /**
      * 注册
      *
-     * @param user 参数封装
-     * @return Result
+     * @param user 用户名和密码
+     * @return Result 带有结果
      */
     public Result<User> register(User user) {
         restart();
         User selectUser = selectUser(user);
-
+        // 判断是否注册
         if (selectUser == null) {
+            // 没有注册，执行注册，返回成功
             int insert = userMapper.insert(user);
             if (insert >= 1) {
                 mResult.setCode(CodeConstant.SUCCESS);
@@ -40,6 +45,7 @@ public class UserService {
                 mResult.setDetail(selectUser(user));
             }
         } else {
+            // 已经注册，直接返回账号已经注册
             mResult.setCode(-1);
             mResult.setMsg("账号已经注册");
             mResult.setDetail(selectUser(user));
@@ -51,7 +57,7 @@ public class UserService {
      * 登录
      *
      * @param user 用户名和密码
-     * @return Result
+     * @return Result带有结果
      */
     public Result<User> login(User user) {
         restart();
@@ -62,10 +68,12 @@ public class UserService {
                 && user.getAccountNumber().equals(selectUser.getAccountNumber())
                 && user.getPassword().equals(selectUser.getPassword())) {
 
+            // 满足，登录成功
             mResult.setCode(CodeConstant.SUCCESS);
             mResult.setMsg("登录成功");
             mResult.setDetail(selectUser(user));
         } else {
+            // 不满足，登录失败
             mResult.setCode(CodeConstant.FAIL);
             mResult.setMsg("登录失败");
             mResult.setDetail(selectUser(user));

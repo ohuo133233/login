@@ -1,5 +1,9 @@
 package com.example.login.bean;
 
+/**
+ * 返回给客户端包装的Result
+ * 格式统一方便客户端解析和分析错误
+ */
 public class Result<T> {
 
     // 返回信息
